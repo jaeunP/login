@@ -9,10 +9,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class sessionTest {
+
     SessionManager sessionManager = new SessionManager();
+
+    //test에서는 HttpServletRequest , HttpservletResponse 객체를 직접 사용할 수 없다
+    //그래서 비슷한 역할을 해주는 가짜 MockHttpServletRequest , MockHttpServletResponse을 사용
 
     @Test
     void sessionTest() {
+
         // 세션 생성
         MockHttpServletResponse response = new MockHttpServletResponse();
         Member member = new Member();

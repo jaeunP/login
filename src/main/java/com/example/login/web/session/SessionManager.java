@@ -14,7 +14,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class SessionManager {
 
     private static final String SESSION_COOKIE_NAME = "mySessionId";
-    private Map<String, Object> sessionStore = new ConcurrentHashMap<>();
+    private Map<String, Object> sessionStore = new ConcurrentHashMap<>();   //HashMap은 동시 요청에 안전하지 않음
 
     /**
      * 세션 생성

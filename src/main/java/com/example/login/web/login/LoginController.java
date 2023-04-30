@@ -134,6 +134,7 @@ public class LoginController {
 //
 //        //로그인 성공 처리
 //        // 세션 관리자를 통해 세션을 생성하고, 회원 데이터 보관
+//        //로그인 성공시 세션을 등록하고 세션에 loginMember를 저장해두고 쿠키도 함께 발행
 //        sessionManager.createSession(loginMember, response);
 //
 //        return "redirect:/";
