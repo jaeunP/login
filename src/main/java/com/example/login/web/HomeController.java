@@ -2,6 +2,7 @@ package com.example.login.web;
 
 import com.example.login.doamin.member.Member;
 import com.example.login.doamin.member.MemberRepository;
+import com.example.login.web.argumentresolver.Login;
 import com.example.login.web.login.SessionConst;
 import com.example.login.web.session.SessionManager;
 import lombok.RequiredArgsConstructor;
@@ -22,21 +23,10 @@ public class HomeController {
     private final MemberRepository memberRepository;
     SessionManager sessionManager = new SessionManager();
 
-
-    /**
-     * homeLogin V3
-     */
     @GetMapping("/")
-    public String homeLoginV3(
-            @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Model model) {
+    public String homeLoginV3ArgumentResolver(
+            @Login Member loginMember, Model model) {
 
-        //세션을 찾고 세션에 들어있는 데이터를 찾는 과정
-//        HttpSession session = request.getSession(false);
-//        if (session == null) {
-//            return "home";
-//        }
-//
-//        Member loginMember = (Member)session.getAttribute(SessionConst.LOGIN_MEMBER);
 
         // 세션에 회원 데이터가 없으면 home
         if (loginMember == null) {
@@ -47,6 +37,7 @@ public class HomeController {
         model.addAttribute("member", loginMember);
         return "loginHome";
     }
+
 
 
 }
@@ -86,5 +77,32 @@ public class HomeController {
 //        }
 //
 //        model.addAttribute("member", member);
+//        return "loginHome";
+//    }
+
+    /**
+     * homeLogin V3
+     */
+//    @GetMapping("/")
+//    public String homeLoginV3(
+//            @SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) Member loginMember, Model model) {
+//
+//
+//        //세션을 찾고 세션에 들어있는 데이터를 찾는 과정
+////        HttpSession session = request.getSession(false);
+////        if (session == null) {
+////            return "home";
+////        }
+////
+////        Member loginMember = (Member)session.getAttribute(SessionConst.LOGIN_MEMBER);
+////        위의 코드를 @SessionAttribute로 해결
+//
+//        // 세션에 회원 데이터가 없으면 home
+//        if (loginMember == null) {
+//            return "home";
+//        }
+//
+//        // 세션이 유지되면 로그인으로 이동
+//        model.addAttribute("member", loginMember);
 //        return "loginHome";
 //    }
