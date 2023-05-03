@@ -26,6 +26,12 @@ public class LoginMemberArgumentResolver implements HandlerMethodArgumentResolve
         return hasLoginAnnotation && hasMemberType;
     }
 
+
+/**
+ *   컨트롤러 호출 직전에 호출되어서 필요한 파라미터 정보를 생성
+ *   세션에 있는 로그인 회원 정보인 member 객체를 찾아서 반환
+ *   스프링MVC는 컨트롤러의 메서드를 호출하면서 여기에서 반환된 member 객체를 파라미터에 전달
+ */
     @Override
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer mavContainer, NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
 
